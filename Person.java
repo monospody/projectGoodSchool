@@ -4,6 +4,7 @@ abstract public class Person {
     private String firstName;
     private String lastName;
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -17,7 +18,7 @@ abstract public class Person {
         this.lastName = lastName;
     }
     public String getFullName(){
-        return "a";
+        return firstName+" "+lastName;
 
     }
 

@@ -1,12 +1,13 @@
 package sk.itsovy.podhajecka.projectGoodSchool;
 
-public class Student {
+public class Student extends Person {
     private byte g_Mat;
     private byte g_Eng;
     private byte g_Inf;
     private int absence;
 
     public Student(String firstName, String lastName, byte g_Mat, byte g_Eng, byte g_Inf, int absence) {
+        super(firstName, lastName);
         this.g_Mat = g_Mat;
         this.g_Eng = g_Eng;
         this.g_Inf = g_Inf;
@@ -29,7 +30,7 @@ public class Student {
         return absence;
     }
     public double getAverageGrade(){
-        return 0.01;
+        return (double)(g_Mat+g_Eng+g_Inf)/3;
 
     }
 
