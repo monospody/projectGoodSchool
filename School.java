@@ -7,17 +7,17 @@ import java.util.List;
 
 public class School implements SchoolStat{
     private List<Student> list;
-    private int counter;
+    private int count;
 
     public void addStudent(Student student){
         list.add(student);
-        counter++;
+        count++;
     }
     public School(){
         list = new ArrayList<>();
     }
     public int getCount(){
-        return counter;
+        return count;
     }
     @Override
     public Student getTheBestStudent() {
