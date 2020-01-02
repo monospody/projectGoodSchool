@@ -2,6 +2,7 @@ package sk.itsovy.podhajecka.projectGoodSchool;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class School implements SchoolStat{
@@ -20,7 +21,7 @@ public class School implements SchoolStat{
     }
     @Override
     public Student getTheBestStudent() {
-        double aver=6;
+        double aver=list.get(0).getAverageGrade();
         int student=0;
         for (int i=0; i<list.size();i++) {
             if (aver>list.get(i).getAverageGrade()){
@@ -33,37 +34,74 @@ public class School implements SchoolStat{
 
     @Override
     public int getAverageAbsence() {
-
-        return 0;
+        int sum = 0;
+        for (int i=0; i<list.size();i++) {
+            sum = sum + list.get(i).getAbsence();
+        };
+        return sum/list.size();
     }
 
     @Override
     public double getAverageGrade() {
-        return 0;
+        double sum = 0;
+        for (int i=0; i<list.size();i++) {
+            sum = sum + list.get(i).getAverageGrade();
+        };
+        return sum/list.size();
     }
 
     @Override
     public double getAverageGradeFromMath() {
-        return 0;
+        double sum = 0;
+        for (int i=0; i<list.size();i++) {
+            sum = sum + list.get(i).getG_Mat();
+        };
+        return sum/list.size();
     }
 
     @Override
     public Student getTheWorstStudent() {
-        return null;
+        double aver=list.get(0).getAverageGrade();
+        int student=0;
+        for (int i=0; i<list.size();i++) {
+            if (aver<list.get(i).getAverageGrade()){
+                aver = list.get(i).getAverageGrade();
+                student = i;
+            }
+        }
+        return list.get(student);
     }
 
     @Override
     public int getTheLowestAbsence() {
-        return 0;
+        int absence = list.get(0).getAbsence();
+        for (int i=0; i<list.size();i++) {
+            if (absence>list.get(i).getAbsence()) {
+                absence = list.get(i).getAbsence();
+            }
+        };
+        return absence;
+
     }
 
     @Override
     public List getListSortedByLastNameAsc() {
-        return null;
+        List<Student> newlist = list;
+        newlist.sort(Comparator.comparing(Student::getLastName));
+        for (int i = 0; i < newlist.size(); i++) {
+            System.out.println(newlist.get(i).getLastName());
+        }
+        return newlist;
     }
 
     @Override
     public List getListSortedByAbsenceDesc() {
-        return null;
+        List<Student> newlist = list;
+        newlist.sort(Comparator.comparing(Student::getAbsence));
+        Collections.reverse(newlist);
+        for (int i = 0; i < newlist.size(); i++) {
+            System.out.println(newlist.get(i).getFirstName() + " "+ newlist.get(i).getAbsence());
+        }
+        return newlist;
     }
 }

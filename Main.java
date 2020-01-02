@@ -21,6 +21,12 @@ public class Main {
                 }
             }
         System.out.println(mySchool.getTheBestStudent().getFullName());
+        System.out.println(mySchool.getTheWorstStudent().getFullName());
+        System.out.println(mySchool.getAverageAbsence());
+        System.out.println(mySchool.getAverageGrade());
+        System.out.println(mySchool.getTheLowestAbsence());
+        mySchool.getListSortedByLastNameAsc();
+        mySchool.getListSortedByAbsenceDesc();
 
     }
 }
